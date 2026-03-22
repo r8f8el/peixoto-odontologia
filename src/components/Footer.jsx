@@ -33,9 +33,9 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-16 items-start relative z-10">
           
           {/* Brand Info */}
-          <div className="col-span-2 space-y-12">
+          <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left space-y-12">
             <div className="flex items-center gap-4 group cursor-pointer">
-              <div className="bg-white p-4 rounded-2xl shadow-lux">
+              <div className="bg-white p-4 rounded-2xl shadow-lux mx-auto md:mx-0">
                 <img 
                   src="/assets/logo.png" 
                   alt={clinicInfo.name} 
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-10">
+          <div className="space-y-10 flex flex-col items-center md:items-start text-center md:text-left w-full">
             <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-secondary">A Clínica</h4>
             <ul className="space-y-4 font-body text-lg text-slate-400">
               <li><a href="#a-clínica" className="hover:text-white transition-colors cursor-pointer capitalize">Sobre Nós</a></li>
@@ -62,28 +62,28 @@ const Footer = () => {
           </div>
 
           {/* Contact Details */}
-          <div className="space-y-10">
+          <div className="space-y-10 flex flex-col items-center md:items-start text-center md:text-left w-full">
             <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-secondary">Contato</h4>
             <ul className="space-y-6 font-body text-lg text-slate-400">
               <li className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
-                <a href="https://wa.me/5564993184545" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
-                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5">
+                <a href="https://wa.me/5564993184545" target="_blank" rel="noopener noreferrer" className="flex items-center flex-col md:flex-row gap-4">
+                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mx-auto md:mx-0">
                     <Phone size={18} />
                   </div>
                   (64) 99318-4545
                 </a>
               </li>
               <li className="flex items-start gap-4 hover:text-white transition-colors cursor-pointer">
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4">
-                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mt-1">
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center flex-col md:flex-row gap-4">
+                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mt-1 mx-auto md:mx-0">
                     <MapPin size={18} />
                   </div>
                   <span>Av. do Fórum, Qd. 33, Lt. 27, Sala B<br/>Itaguaí II, Caldas Novas - GO</span>
                 </a>
               </li>
               <li className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
-                <a href="https://instagram.com/peixotoodontologia" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
-                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5">
+                <a href="https://instagram.com/peixotoodontologia" target="_blank" rel="noopener noreferrer" className="flex items-center flex-col md:flex-row gap-4">
+                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mx-auto md:mx-0">
                     <Instagram size={18} />
                   </div>
                   @peixoto.odontologia
