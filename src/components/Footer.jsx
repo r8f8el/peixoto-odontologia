@@ -54,10 +54,10 @@ const Footer = () => {
           <div className="space-y-10">
             <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-secondary">A Clínica</h4>
             <ul className="space-y-4 font-body text-lg text-slate-400">
-              <li className="hover:text-white transition-colors cursor-pointer capitalize">Sobre Nós</li>
-              <li className="hover:text-white transition-colors cursor-pointer capitalize">Nossa Equipe</li>
-              <li className="hover:text-white transition-colors cursor-pointer capitalize">Unidade Goiânia</li>
-              <li className="hover:text-white transition-colors cursor-pointer capitalize">Blog</li>
+              <li><a href="#a-clínica" className="hover:text-white transition-colors cursor-pointer capitalize">Sobre Nós</a></li>
+              <li><a href="#equipe" className="hover:text-white transition-colors cursor-pointer capitalize">Nossa Equipe</a></li>
+              <li><a href="#tratamentos" className="hover:text-white transition-colors cursor-pointer capitalize">Unidade Goiânia</a></li>
+              <li><a href="https://blog.peixotoodontologia.com.br" className="hover:text-white transition-colors cursor-pointer capitalize">Blog</a></li>
             </ul>
           </div>
 
@@ -66,22 +66,28 @@ const Footer = () => {
             <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-secondary">Contato</h4>
             <ul className="space-y-6 font-body text-lg text-slate-400">
               <li className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
-                <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5">
-                  <Phone size={18} />
-                </div>
-                (64) 99318-4545
+                <a href="https://wa.me/5564993184545" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
+                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5">
+                    <Phone size={18} />
+                  </div>
+                  (64) 99318-4545
+                </a>
               </li>
               <li className="flex items-start gap-4 hover:text-white transition-colors cursor-pointer">
-                <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mt-1">
-                  <MapPin size={18} />
-                </div>
-                <span>Av. do Fórum, Qd. 33, Lt. 27, Sala B<br/>Itaguaí II, Caldas Novas - GO</span>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4">
+                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mt-1">
+                    <MapPin size={18} />
+                  </div>
+                  <span>Av. do Fórum, Qd. 33, Lt. 27, Sala B<br/>Itaguaí II, Caldas Novas - GO</span>
+                </a>
               </li>
               <li className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
-                <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5">
-                  <Instagram size={18} />
-                </div>
-                @peixotoodonto
+                <a href="https://instagram.com/peixotoodontologia" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4">
+                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5">
+                    <Instagram size={18} />
+                  </div>
+                  @peixoto.odontologia
+                </a>
               </li>
             </ul>
           </div>

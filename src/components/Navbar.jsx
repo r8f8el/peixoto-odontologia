@@ -35,13 +35,16 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <motion.button
+          <motion.a
+            href="https://wa.me/5564993184545"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-primary text-white px-6 py-2 rounded-xl text-sm font-semibold tracking-wider hover:bg-secondary transition-colors duration-500 shadow-xl"
+            className="bg-primary text-white px-6 py-2 rounded-xl text-sm font-semibold tracking-wider hover:bg-secondary transition-colors duration-500 shadow-xl cursor-pointer"
           >
             AGENDAR
-          </motion.button>
+          </motion.a>
         </div>
       </div>
     </motion.nav>

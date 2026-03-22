@@ -97,16 +97,22 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 pt-6">
-            <motion.button
+            <motion.a
+              href="https://wa.me/5564993184545"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-primary text-secondary border-2 border-primary px-10 py-5 rounded-2xl font-black tracking-[0.2em] text-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-500 shadow-2xl flex items-center justify-center gap-3"
+              className="bg-primary text-secondary border-2 border-primary px-10 py-5 rounded-2xl font-black tracking-[0.2em] text-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-500 shadow-2xl flex items-center justify-center gap-3 cursor-pointer"
             >
               MARCAR CONSULTA <Diamond size={18} fill="currentColor" />
-            </motion.button>
-            <button className="px-10 py-5 rounded-2xl font-bold tracking-widest text-sm text-primary/40 hover:text-secondary transition-colors duration-300 underline underline-offset-8 decoration-secondary/30">
+            </motion.a>
+            <a 
+              href="#equipe"
+              className="px-10 py-5 rounded-2xl font-bold tracking-widest text-sm text-primary/40 hover:text-secondary transition-colors duration-300 underline underline-offset-8 decoration-secondary/30 text-center"
+            >
               CONHEÇA A EQUIPE
-            </button>
+            </a>
           </div>
         </motion.div>
         

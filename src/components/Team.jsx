@@ -74,7 +74,7 @@ const Team = () => {
               {/* Image with Desktop Hover Detail */}
               <div className="relative w-full aspect-[3/4] rounded-[3rem] overflow-hidden shadow-lux group-hover:shadow-[0_40px_80px_rgba(15,23,42,0.15)] transition-all duration-700 bg-slate-100 border-4 border-white">
                 <div 
-                   className="absolute inset-0 bg-center bg-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0 contrast-110" 
+                   className="absolute inset-0 bg-center bg-cover transition-transform duration-1000 group-hover:scale-110 grayscale-0 md:grayscale md:group-hover:grayscale-0 contrast-110" 
                    style={{ backgroundImage: `url(${p.image_url})` }}
                 />
                 

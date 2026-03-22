@@ -78,25 +78,31 @@ const Treatments = () => {
               Unindo ciência e tecnologia para oferecer os melhores resultados em Caldas Novas.
             </p>
           </div>
-          <motion.button 
+          <motion.a 
+             href="https://wa.me/5564993184545"
+             target="_blank"
+             rel="noopener noreferrer"
              whileHover={{ scale: 1.05 }}
-             className="px-8 py-4 border-2 border-primary text-primary font-bold tracking-widest text-sm rounded-2xl hover:bg-primary hover:text-white transition-all duration-500"
+             className="px-8 py-4 border-2 border-primary text-primary font-bold tracking-widest text-sm rounded-2xl hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer"
           >
-            VER TODOS OS SERVIÇOS
-          </motion.button>
+            FALAR COM ESPECIALISTA
+          </motion.a>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {treatments.map((t, idx) => {
             const IconComp = LucideIcons[t.icon_name] || LucideIcons.Sparkles;
             return (
-              <motion.div
+              <motion.a
                 key={t.id || t.title}
+                href="https://wa.me/5564993184545"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 whileHover={{ y: -10 }}
-                className="glass-card p-10 space-y-6 group cursor-pointer hover:border-secondary/30 transition-all duration-500"
+                className="glass-card p-10 space-y-6 group cursor-pointer hover:border-secondary/30 transition-all duration-500 block"
               >
                 <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-700 shadow-sm group-hover:shadow-secondary/50">
                   <IconComp size={32} />
@@ -105,7 +111,10 @@ const Treatments = () => {
                 <p className="text-primary/60 font-body leading-relaxed">
                   {t.description}
                 </p>
-              </motion.div>
+                <div className="pt-4 flex items-center gap-2 text-xs font-black tracking-widest text-secondary opacity-0 group-hover:opacity-100 transition-all duration-500 uppercase">
+                   AGENDAR CONSULTA <LucideIcons.ArrowRight size={14} />
+                </div>
+              </motion.a>
             );
           })}
         </div>
