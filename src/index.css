@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Cormorant';
-  src: url('https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&display=swap');
+  font-family: 'Outfit';
+  src: url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+  font-family: 'Inter';
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 }
 
 @theme {
-  --font-display: "Cormorant", serif;
-  --font-body: "Montserrat", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Inter", sans-serif;
 
   --color-primary: #0F172A;
   --color-secondary: #0369A1;

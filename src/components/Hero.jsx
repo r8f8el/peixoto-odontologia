@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Diamond, RefreshCw } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
-const heroImages = [
+const defaultHeroImages = [
   '/assets/clinic-1.png',
   '/assets/clinic-2.jpg',
   '/assets/clinic-3.jpg',
@@ -16,25 +16,36 @@ const Hero = () => {
     hero_title: 'Inovação e Arte em cada detalhe do seu sorriso.',
     hero_subtitle: 'Uma abordagem moderna e sofisticada onde a odontologia de alta performance se une ao conhecimento de mestres e doutores.',
     hero_badge: 'EXCELÊNCIA CLÍNICA & ACADÊMICA',
-    hero_images: JSON.stringify(heroImages)
+    hero_images: JSON.stringify(defaultHeroImages)
   });
 
-  useEffect(() => {
-    const fetchContent = async () => {
-      const { data, error } = await supabase.from('site_content').select('*');
-      if (!error && data?.length > 0) {
-        const contentMap = {};
-        data.forEach(item => {
-          contentMap[item.key] = item.value;
-        });
-        setContent(prev => ({ ...prev, ...contentMap }));
-      }
-    };
+  const fetchContent = async () => {
+    const { data, error } = await supabase.from('site_content').select('*');
+    if (!error && data?.length > 0) {
+      const contentMap = {};
+      data.forEach(item => {
+        contentMap[item.key] = item.value;
+      });
+      setContent(prev => ({ ...prev, ...contentMap }));
+    }
+  };
 
+  useEffect(() => {
     fetchContent();
+    
+    // Listen for updates from Admin
+    window.addEventListener('site-content-updated', fetchContent);
+    return () => window.removeEventListener('site-content-updated', fetchContent);
   }, []);
 
-  const activeImages = content.hero_images ? JSON.parse(content.hero_images) : heroImages;
+  const activeImages = (() => {
+    try {
+      const parsed = JSON.parse(content.hero_images);
+      return parsed.length > 0 ? parsed : defaultHeroImages;
+    } catch {
+      return defaultHeroImages;
+    }
+  })();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,38 +54,49 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, [activeImages.length]);
 
+  // Função para renderizar o título com o detalhe colorido
+  const renderTitle = (text) => {
+    if (!text) return null;
+    const parts = text.split(/(sorriso)/i);
+    return parts.map((part, i) => 
+      part.toLowerCase() === 'sorriso' 
+        ? <span key={i} className="text-secondary italic">{part}</span> 
+        : part
+    );
+  };
+
   return (
-    <section id="a-clínica" className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6">
-      <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+    <section id="a-clínica" className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6 font-body overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
         {/* Hero Text */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-10"
         >
-          <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-4 py-1.5 rounded-full text-secondary text-sm font-semibold tracking-wider">
+          <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-5 py-2 rounded-full text-secondary text-xs font-black tracking-[0.2em]">
             <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-            <Sparkles size={16} /> {content.hero_badge}
+            <Sparkles size={14} /> {content.hero_badge}
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-display leading-[1.1] text-primary whitespace-pre-line">
-            {content.hero_title}
+          <h1 className="text-6xl md:text-8xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight">
+            {renderTitle(content.hero_title)}
           </h1>
           
-          <p className="text-lg md:text-xl text-primary/70 max-w-lg leading-relaxed font-body">
+          <p className="text-lg md:text-xl text-primary/60 max-w-lg leading-relaxed font-body font-medium">
             {content.hero_subtitle}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 pt-4">
+          <div className="flex flex-col sm:flex-row gap-6 pt-6">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-primary text-white border-2 border-primary px-10 py-5 rounded-2xl font-bold tracking-widest text-lg hover:bg-secondary hover:border-secondary transition-all duration-500 shadow-2xl flex items-center gap-3"
+              className="bg-primary text-secondary border-2 border-primary px-10 py-5 rounded-2xl font-black tracking-[0.2em] text-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-500 shadow-2xl flex items-center justify-center gap-3"
             >
-              MARCAR CONSULTA <Diamond size={20} fill="currentColor" />
+              MARCAR CONSULTA <Diamond size={18} fill="currentColor" />
             </motion.button>
-            <button className="px-10 py-5 rounded-2xl font-bold tracking-widest text-lg text-primary/80 hover:text-secondary transition-colors duration-300 underline underline-offset-8 decoration-secondary/30">
+            <button className="px-10 py-5 rounded-2xl font-bold tracking-widest text-sm text-primary/40 hover:text-secondary transition-colors duration-300 underline underline-offset-8 decoration-secondary/30">
               CONHEÇA A EQUIPE
             </button>
           </div>
@@ -87,36 +109,37 @@ const Hero = () => {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="relative aspect-[4/5] flex items-center justify-center"
         >
-          <div className="w-full h-full bg-white border border-white shadow-lux rounded-[3rem] overflow-hidden relative z-10 p-2">
+          <div className="w-full h-full bg-white border-8 border-white shadow-lux rounded-[4rem] overflow-hidden relative z-10">
             <AnimatePresence mode="wait">
               <motion.div
                 key={imgIndex}
-                initial={{ opacity: 0, scale: 1.1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 1.5 }}
-                className="w-full h-full rounded-[2.5rem] bg-cover bg-center overflow-hidden relative"
+                initial={{ opacity: 0, filter: 'blur(20px)', scale: 1.1 }}
+                animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
+                exit={{ opacity: 0, filter: 'blur(10px)', scale: 0.95 }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                className="w-full h-full bg-cover bg-center overflow-hidden relative"
                 style={{ backgroundImage: `url(${activeImages[imgIndex]})` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
               </motion.div>
             </AnimatePresence>
           </div>
           
-          <div className="absolute -top-10 -right-10 w-60 h-60 bg-secondary/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl" />
+          {/* Decorative shapes */}
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl opacity-60" />
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-60" />
 
           <motion.div 
-            animate={{ y: [0, 20, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-8 lg:-right-8 glass-card p-6 flex items-center gap-4 z-20 max-w-[240px] shadow-2xl"
+            animate={{ y: [0, 15, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-10 lg:-right-10 bg-white/90 backdrop-blur-md p-8 rounded-[2.5rem] flex items-center gap-5 z-20 max-w-[280px] shadow-lux border border-white"
           >
-            <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center text-secondary">
-              <Diamond size={24} />
+            <div className="w-14 h-14 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary">
+              <Diamond size={28} />
             </div>
             <div>
-              <p className="text-xs font-bold text-secondary uppercase tracking-tighter">ESTRUTURA PREMIUM</p>
-              <p className="text-sm font-body text-primary font-medium leading-tight">Tecnologia e Conforto em cada detalhe</p>
+              <p className="text-[10px] font-black text-secondary uppercase tracking-[0.2em] mb-1">SOFISTICAÇÃO</p>
+              <p className="text-sm font-body text-primary font-bold leading-tight">Tecnologia e Conforto em cada detalhe</p>
             </div>
           </motion.div>
         </motion.div>
