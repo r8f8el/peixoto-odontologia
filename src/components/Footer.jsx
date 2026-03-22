@@ -56,7 +56,6 @@ const Footer = () => {
             <ul className="space-y-4 font-body text-lg text-slate-400">
               <li><a href="#a-clínica" className="hover:text-white transition-colors cursor-pointer capitalize">Sobre Nós</a></li>
               <li><a href="#equipe" className="hover:text-white transition-colors cursor-pointer capitalize">Nossa Equipe</a></li>
-              <li><a href="#tratamentos" className="hover:text-white transition-colors cursor-pointer capitalize">Unidade Goiânia</a></li>
               <li><a href="https://blog.peixotoodontologia.com.br" className="hover:text-white transition-colors cursor-pointer capitalize">Blog</a></li>
             </ul>
           </div>
