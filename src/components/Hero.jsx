@@ -40,7 +40,7 @@ const Hero = () => {
 
   const activeImages = (() => {
     try {
-      const parsed = JSON.parse(content.hero_images);
+      const parsed = JSON.parse(content.hero_images || '[]');
       return parsed.length > 0 ? parsed : defaultHeroImages;
     } catch {
       return defaultHeroImages;
@@ -54,22 +54,15 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, [activeImages.length]);
 
-  // Função para renderizar o título com o detalhe colorido e quebra de linha real
+  // Função para renderizar o título com o detalhe colorido (palavra 'sorriso')
   const renderTitle = (text) => {
     if (!text) return null;
-    // Divide em frases (por \n)
-    const lines = text.split('\n');
-    
-    return lines.map((line, idx) => (
-      <div key={idx} className="block last:mt-6 last:text-4xl last:opacity-60 last:font-normal">
-        {line.split(/(Alta Performance|Mestres e Doutores)/gi).map((part, i) => {
-          const isHighlight = /Alta Performance|Mestres e Doutores/gi.test(part);
-          return isHighlight ? (
-            <span key={i} className="text-secondary italic font-bold">{part}</span>
-          ) : part;
-        })}
-      </div>
-    ));
+    const parts = text.split(/(sorriso)/i);
+    return parts.map((part, i) => 
+      part.toLowerCase() === 'sorriso' 
+        ? <span key={i} className="text-secondary italic font-bold">{part}</span> 
+        : part
+    );
   };
 
   return (
@@ -87,7 +80,7 @@ const Hero = () => {
             <Sparkles size={14} /> {content.hero_badge}
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight">
+          <h1 className="text-6xl md:text-8xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight">
             {renderTitle(content.hero_title)}
           </h1>
           
@@ -132,7 +125,6 @@ const Hero = () => {
             </AnimatePresence>
           </div>
           
-          {/* Decorative shapes */}
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-secondary/10 rounded-full blur-3xl opacity-60" />
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl opacity-60" />
 
