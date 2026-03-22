@@ -57,12 +57,20 @@ const Hero = () => {
   // Função para renderizar o título com o detalhe colorido (palavra 'sorriso')
   const renderTitle = (text) => {
     if (!text) return null;
-    const parts = text.split(/(sorriso)/i);
-    return parts.map((part, i) => 
-      part.toLowerCase() === 'sorriso' 
-        ? <span key={i} className="text-secondary italic font-bold">{part}</span> 
-        : part
-    );
+    
+    // Converte literais '\n' para quebras de linha reais
+    const cleanText = text.replace(/\\n/g, '\n');
+    const lines = cleanText.split('\n');
+    
+    return lines.map((line, idx) => (
+      <div key={idx} className="block leading-[1.05]">
+        {line.split(/(sorriso)/i).map((part, i) => 
+          part.toLowerCase() === 'sorriso' 
+            ? <span key={i} className="text-secondary italic font-bold">{part}</span> 
+            : part
+        )}
+      </div>
+    ));
   };
 
   return (

@@ -1,14 +1,5 @@
 @import "tailwindcss";
-
-@font-face {
-  font-family: 'Outfit';
-  src: url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @theme {
   --font-display: "Outfit", sans-serif;
@@ -24,21 +15,29 @@
 
 @layer base {
   body {
-    @apply bg-accent text-primary font-body antialiased;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
     margin: 0;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-primary;
+    font-family: var(--font-display);
+    color: var(--color-primary);
   }
 }
 
 .glass-card {
-  @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-lux rounded-2xl;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-lux);
+  border-radius: 1rem;
 }
 
 .marble-bg {
-  background-image: url('https://www.transparenttextures.com/patterns/marble-vins.png'); /* Provisory texture */
+  background-image: url('https://www.transparenttextures.com/patterns/marble-vins.png');
   background-repeat: repeat;
 }
 
@@ -46,6 +45,14 @@
   background: linear-gradient(135deg, #7DD3FC 0%, #0F172A 100%);
 }
 
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+/* Custom scrollbar utility */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #0369A1;
+  border-radius: 10px;
 }
