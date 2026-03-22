@@ -68,13 +68,13 @@ const Treatments = () => {
   return (
     <section id="tratamentos" className="py-32 px-6 relative bg-white/50">
       <div className="max-w-7xl mx-auto space-y-20">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-8">
-          <div className="space-y-4 max-w-2xl">
-            <h2 className="text-4xl md:text-6xl font-display text-primary uppercase leading-tight">
-              Soluções Completas <br />
-              de <span className="text-secondary opacity-70 italic">Alta Performance.</span>
+        <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
+          <div className="space-y-6">
+            <h2 className="text-5xl md:text-7xl font-display text-primary uppercase leading-[1.1] tracking-tight">
+              Soluções Completas <br className="hidden md:block" />
+              de <span className="text-secondary opacity-70 italic font-black">Alta Performance.</span>
             </h2>
-            <p className="text-primary/70 text-lg font-body">
+            <p className="text-primary/70 text-lg md:text-xl font-body max-w-xl mx-auto">
               Unindo ciência e tecnologia para oferecer os melhores resultados em Caldas Novas.
             </p>
           </div>
@@ -83,7 +83,7 @@ const Treatments = () => {
              target="_blank"
              rel="noopener noreferrer"
              whileHover={{ scale: 1.05 }}
-             className="px-8 py-4 border-2 border-primary text-primary font-bold tracking-widest text-sm rounded-2xl hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer"
+             className="px-10 py-5 border-2 border-primary text-primary font-bold tracking-widest text-sm rounded-2xl hover:bg-primary hover:text-white transition-all duration-500 cursor-pointer shadow-sm hover:shadow-lux"
           >
             FALAR COM ESPECIALISTA
           </motion.a>
