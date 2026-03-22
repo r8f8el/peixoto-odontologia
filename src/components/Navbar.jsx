@@ -9,12 +9,12 @@ const Navbar = () => {
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       className="fixed top-6 left-1/2 -translate-x-1/2 w-[92%] max-w-7xl z-50 font-body"
     >
-      <div className="glass-card px-4 md:px-10 py-3 md:py-4 flex items-center justify-between shadow-[0_20px_50px_rgba(15,23,42,0.15)] border-white/20">
+      <div className="glass-card px-4 md:px-10 py-3 md:py-4 flex items-center justify-center shadow-[0_20px_50px_rgba(15,23,42,0.15)] border-white/20">
         
-        {/* Simplified Navigation Links - Centered/Proportional spacing */}
-        <div className="flex items-center justify-between w-full md:w-auto md:gap-12 text-[10px] md:text-sm font-bold tracking-widest uppercase">
+        {/* Navigation Links - Centered inside the container */}
+        <div className="flex items-center justify-center gap-6 sm:gap-10 md:gap-16 text-[10px] md:text-sm font-bold tracking-widest uppercase w-full">
           
-          <div className="flex items-center gap-4 sm:gap-6 md:gap-12">
+          <div className="flex items-center gap-6 sm:gap-10 md:gap-16">
             {['Equipe', 'Tratamentos', 'Contato'].map((item) => (
               <a 
                 key={item} 
@@ -26,14 +26,14 @@ const Navbar = () => {
             ))}
           </div>
           
-          {/* Action Button - Robust and inside the box on mobile */}
+          {/* Action Button - Robust, centered with the rest */}
           <motion.a
             href="https://wa.me/5564993184545"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="ml-4 bg-primary text-white px-4 md:px-6 py-2 md:py-2.5 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black tracking-widest hover:bg-secondary transition-all duration-500 shadow-xl flex items-center gap-2 whitespace-nowrap"
+            className="bg-primary text-white px-5 md:px-8 py-2.5 md:py-3 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black tracking-widest hover:bg-secondary transition-all duration-500 shadow-xl flex items-center gap-2 whitespace-nowrap cursor-pointer"
           >
             AGENDAR
           </motion.a>
