@@ -54,15 +54,22 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, [activeImages.length]);
 
-  // Função para renderizar o título com o detalhe colorido
+  // Função para renderizar o título com o detalhe colorido e quebra de linha real
   const renderTitle = (text) => {
     if (!text) return null;
-    const parts = text.split(/(sorriso)/i);
-    return parts.map((part, i) => 
-      part.toLowerCase() === 'sorriso' 
-        ? <span key={i} className="text-secondary italic">{part}</span> 
-        : part
-    );
+    // Divide em frases (por \n)
+    const lines = text.split('\n');
+    
+    return lines.map((line, idx) => (
+      <div key={idx} className="block last:mt-6 last:text-4xl last:opacity-60 last:font-normal">
+        {line.split(/(Alta Performance|Mestres e Doutores)/gi).map((part, i) => {
+          const isHighlight = /Alta Performance|Mestres e Doutores/gi.test(part);
+          return isHighlight ? (
+            <span key={i} className="text-secondary italic font-bold">{part}</span>
+          ) : part;
+        })}
+      </div>
+    ));
   };
 
   return (
@@ -80,7 +87,7 @@ const Hero = () => {
             <Sparkles size={14} /> {content.hero_badge}
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight">
             {renderTitle(content.hero_title)}
           </h1>
           
