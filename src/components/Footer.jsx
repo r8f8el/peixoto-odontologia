@@ -99,7 +99,7 @@ const Footer = () => {
               </li>
               <li className="w-full">
                 <a 
-                  href="https://instagram.com/peixoto.odontologia" 
+                  href="https://www.instagram.com/dr.lucaspeixoto/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-center flex-col md:flex-row gap-4 group cursor-pointer w-full hover:translate-x-1 transition-all duration-300"
@@ -109,7 +109,7 @@ const Footer = () => {
                   </div>
                   <div className="flex flex-col flex-1 overflow-hidden">
                     <span className="text-[10px] font-black uppercase tracking-widest text-secondary opacity-60">Instagram</span>
-                    <span className="text-slate-300 group-hover:text-white transition-colors text-base md:text-lg">@peixoto.odontologia</span>
+                    <span className="text-slate-300 group-hover:text-white transition-colors text-base md:text-lg">@dr.lucaspeixoto</span>
                   </div>
                 </a>
               </li>
