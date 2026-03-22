@@ -64,30 +64,57 @@ const Footer = () => {
           {/* Contact Details */}
           <div className="space-y-10 flex flex-col items-center md:items-start text-center md:text-left w-full">
             <h4 className="text-xs uppercase font-bold tracking-[0.3em] text-secondary">Contato</h4>
-            <ul className="space-y-6 font-body text-lg text-slate-400">
-              <li className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
-                <a href="https://wa.me/5564993184545" target="_blank" rel="noopener noreferrer" className="flex items-center flex-col md:flex-row gap-4">
-                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mx-auto md:mx-0">
-                    <Phone size={18} />
+            <ul className="space-y-6 font-body text-lg text-slate-400 w-full max-w-xs md:max-w-none">
+              <li>
+                <motion.a 
+                  href="https://wa.me/5564993184545" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ x: 5 }}
+                  className="flex items-center flex-col md:flex-row gap-4 group"
+                >
+                  <div className="w-12 h-12 border border-white/10 rounded-2xl flex items-center justify-center bg-white/5 group-hover:bg-secondary group-hover:border-secondary transition-all duration-500">
+                    <Phone size={20} className="group-hover:text-white" />
                   </div>
-                  (64) 99318-4545
-                </a>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-secondary opacity-60">WhatsApp</span>
+                    <span className="text-slate-300 group-hover:text-white transition-colors">(64) 99318-4545</span>
+                  </div>
+                </motion.a>
               </li>
-              <li className="flex items-start gap-4 hover:text-white transition-colors cursor-pointer">
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-center flex-col md:flex-row gap-4">
-                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mt-1 mx-auto md:mx-0">
-                    <MapPin size={18} />
+              <li>
+                <motion.a 
+                  href="https://www.google.com/maps/search/?api=1&query=Av.+do+F%C3%B3rum,+Qd.+33,+Lt.+27,+Sala+B+Itagua%C3%AD+II,+Caldas+Novas+-+GO" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ x: 5 }}
+                  className="flex items-center flex-col md:flex-row gap-4 group"
+                >
+                  <div className="w-12 h-12 border border-white/10 rounded-2xl flex items-center justify-center bg-white/5 group-hover:bg-secondary group-hover:border-secondary transition-all duration-500">
+                    <MapPin size={20} className="group-hover:text-white" />
                   </div>
-                  <span>Av. do Fórum, Qd. 33, Lt. 27, Sala B<br/>Itaguaí II, Caldas Novas - GO</span>
-                </a>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-secondary opacity-60">Localização</span>
+                    <span className="text-slate-300 group-hover:text-white transition-colors text-sm">Av. do Fórum, Qd. 33, Lt. 27, Sala B<br/>Itaguaí II, Caldas Novas - GO</span>
+                  </div>
+                </motion.a>
               </li>
-              <li className="flex items-center gap-4 hover:text-white transition-colors cursor-pointer">
-                <a href="https://instagram.com/peixotoodontologia" target="_blank" rel="noopener noreferrer" className="flex items-center flex-col md:flex-row gap-4">
-                  <div className="w-10 h-10 border border-white/10 rounded-lg flex items-center justify-center bg-white/5 mx-auto md:mx-0">
-                    <Instagram size={18} />
+              <li>
+                <motion.a 
+                  href="https://instagram.com/peixoto.odontologia" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  whileHover={{ x: 5 }}
+                  className="flex items-center flex-col md:flex-row gap-4 group"
+                >
+                  <div className="w-12 h-12 border border-white/10 rounded-2xl flex items-center justify-center bg-white/5 group-hover:bg-secondary group-hover:border-secondary transition-all duration-500">
+                    <Instagram size={20} className="group-hover:text-white" />
                   </div>
-                  @peixoto.odontologia
-                </a>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-secondary opacity-60">Instagram</span>
+                    <span className="text-slate-300 group-hover:text-white transition-colors">@peixoto.odontologia</span>
+                  </div>
+                </motion.a>
               </li>
             </ul>
           </div>
