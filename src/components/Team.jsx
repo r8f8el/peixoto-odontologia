@@ -61,35 +61,49 @@ const Team = () => {
         </div>
 
         {/* Dynamic CMS Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-20 items-stretch">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-20 items-stretch font-body">
           {professionals.map((p, idx) => (
             <motion.div
               key={p.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
-              className={`group flex flex-col items-center ${idx % 2 !== 0 ? 'md:translate-y-12' : ''}`}
+              className={`group flex flex-col items-center cursor-pointer ${idx % 2 !== 0 ? 'md:translate-y-12' : ''}`}
             >
-              <div className="relative w-full aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-lux group-hover:shadow-[0_40px_80px_rgba(15,23,42,0.15)] transition-all duration-700 bg-slate-100">
+              {/* Image with Desktop Hover Detail */}
+              <div className="relative w-full aspect-[3/4] rounded-[3rem] overflow-hidden shadow-lux group-hover:shadow-[0_40px_80px_rgba(15,23,42,0.15)] transition-all duration-700 bg-slate-100 border-4 border-white">
                 <div 
                    className="absolute inset-0 bg-center bg-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0 contrast-110" 
                    style={{ backgroundImage: `url(${p.image_url})` }}
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/20 to-transparent flex flex-col justify-end p-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                {/* Desktop Layer Only (Hover) */}
+                <div className="absolute inset-x-0 bottom-0 top-1/2 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent flex flex-col justify-end p-8 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 hidden md:flex">
                    <div className="space-y-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
                      <GraduationCap className="text-secondary w-8 h-8" />
-                     <p className="font-body text-sm leading-relaxed text-slate-300">
+                     <p className="font-body text-sm leading-relaxed text-slate-200">
                        {p.specialty}
                      </p>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 text-center space-y-2">
-                <h3 className="text-2xl font-display text-primary">{p.name}</h3>
-                <div className="flex items-center justify-center gap-2 text-xs font-bold tracking-[0.2em] text-secondary uppercase">
+              {/* Title & Info Section */}
+              <div className="mt-8 text-center space-y-3 px-4">
+                <h3 className="text-2xl md:text-3xl font-display text-primary tracking-tight leading-none">{p.name}</h3>
+                <div className="flex items-center justify-center gap-2 text-[10px] font-black tracking-widest text-secondary uppercase bg-secondary/5 py-1 px-4 rounded-full w-fit mx-auto">
                    <Award size={14} /> {p.registration}
+                </div>
+                
+                {/* Mobile/Tablet Exclusive Detail (Visible by default) */}
+                <div className="md:hidden pt-4 space-y-3 bg-soft-blue/50 p-6 rounded-3xl border border-secondary/5">
+                   <div className="flex justify-center text-secondary">
+                      <GraduationCap size={24} />
+                   </div>
+                   <p className="text-sm font-body text-primary/70 leading-relaxed font-medium">
+                      {p.specialty}
+                   </p>
                 </div>
               </div>
             </motion.div>
