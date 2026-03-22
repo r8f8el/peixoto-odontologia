@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../../lib/supabase';
 import { useNavigate } from 'react-router-dom';
-import { Lock, Mail, AlertCircle, ArrowRight, Sparkles } from 'lucide-react';
+import { Lock, Mail, AlertCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const AdminLogin = () => {
@@ -27,32 +27,29 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-primary relative overflow-hidden font-body">
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[120px]" />
-      <div className="absolute inset-0 marble-bg opacity-5 pointer-events-none" />
+    <div className="min-h-screen flex items-center justify-center bg-white relative overflow-hidden font-body">
+      {/* Subtle Background marble Texture */}
+      <div className="absolute inset-0 marble-bg opacity-[0.03] pointer-events-none" />
+      
+      {/* Decorative side element */}
+      <div className="absolute left-0 top-0 bottom-0 w-1/3 bg-soft-blue/30 hidden lg:block -skew-x-6 -translate-x-20" />
 
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.6 }}
         className="max-w-md w-full mx-4 z-10"
       >
-        <div className="glass-card bg-white/10 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] shadow-2xl space-y-10 relative">
-          <div className="text-center space-y-4">
-            <motion.div 
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mx-auto h-20 w-20 bg-gradient-to-tr from-secondary/30 to-secondary/10 flex items-center justify-center rounded-3xl text-secondary shadow-lg shadow-secondary/20"
-            >
-              <Lock size={32} strokeWidth={1.5} />
-            </motion.div>
+        {/* Main Card */}
+        <div className="bg-white p-12 rounded-[3rem] shadow-lux border border-gray-100 space-y-10">
+          <div className="text-center space-y-6">
+            <div className="mx-auto h-16 w-16 bg-soft-blue flex items-center justify-center rounded-2xl text-secondary">
+              <ShieldCheck size={32} />
+            </div>
             
-            <div className="space-y-1">
-              <h2 className="text-3xl font-display font-bold text-white tracking-tight uppercase italic">Acesso Restrito</h2>
-              <p className="text-white/40 text-xs font-bold tracking-[0.2em] uppercase">Gestão Peixoto Odontologia</p>
+            <div className="space-y-2">
+              <h2 className="text-4xl font-display font-bold text-primary tracking-tight">Portal Administrativo</h2>
+              <p className="text-gray-400 text-xs font-bold tracking-[0.2em] uppercase">Peixoto Odontologia</p>
             </div>
           </div>
 
@@ -60,10 +57,9 @@ const AdminLogin = () => {
             <AnimatePresence mode="wait">
               {error && (
                 <motion.div 
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="bg-red-500/10 border border-red-500/20 p-4 rounded-2xl flex items-center gap-3 text-red-200 text-sm font-medium"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-red-50 border border-red-100 p-4 rounded-2xl flex items-center gap-3 text-red-600 text-sm font-medium"
                 >
                   <AlertCircle size={18} className="shrink-0" />
                   {error}
@@ -72,33 +68,33 @@ const AdminLogin = () => {
             </AnimatePresence>
 
             <div className="space-y-5">
-              <div className="group space-y-2">
-                <label className="block text-[10px] font-black text-white/30 uppercase tracking-[0.2em] ml-1">E-mail de Acesso</label>
+              <div className="space-y-2">
+                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Usuário / E-mail</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-white/20 group-focus-within:text-secondary transition-colors">
+                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-300">
                     <Mail size={18} />
                   </div>
                   <input
                     type="email"
                     required
-                    className="block w-full pl-14 pr-5 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none text-white font-medium placeholder:text-white/10"
-                    placeholder="admin@exemplo.com"
+                    className="block w-full pl-14 pr-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all outline-none text-primary font-medium placeholder:text-gray-300"
+                    placeholder="exemplo@clinica.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
 
-              <div className="group space-y-2">
-                <label className="block text-[10px] font-black text-white/30 uppercase tracking-[0.2em] ml-1">Senha de Segurança</label>
+              <div className="space-y-2">
+                <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Senha de Acesso</label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-white/20 group-focus-within:text-secondary transition-colors">
+                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-gray-300">
                     <Lock size={18} />
                   </div>
                   <input
                     type="password"
                     required
-                    className="block w-full pl-14 pr-5 py-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all outline-none text-white font-medium placeholder:text-white/10"
+                    className="block w-full pl-14 pr-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all outline-none text-primary font-medium placeholder:text-gray-300"
                     placeholder="••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -110,33 +106,33 @@ const AdminLogin = () => {
             <motion.button
               type="submit"
               disabled={loading}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full flex justify-center py-5 px-4 rounded-2xl text-xs font-black tracking-[0.3em] uppercase text-primary bg-secondary hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-secondary/10 flex items-center gap-3"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              className="w-full flex justify-center py-5 px-4 rounded-2xl text-sm font-bold tracking-widest uppercase text-white bg-secondary hover:bg-primary transition-all duration-300 disabled:opacity-50 shadow-lg shadow-secondary/20 flex items-center gap-2"
             >
               {loading ? (
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
-                  AUTENTICANDO...
-                </div>
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               ) : (
                 <>
-                  ENTRAR NO PAINEL <ArrowRight size={16} />
+                  ACESSO SEGURO <ArrowRight size={18} />
                 </>
               )}
             </motion.button>
           </form>
           
-          <div className="text-center pt-4">
-            <p className="text-[10px] text-white/20 font-bold tracking-widest uppercase flex items-center justify-center gap-2">
-               <Sparkles size={12} className="text-secondary" /> Cuidado de Mestres e Doutores
-            </p>
+          <div className="pt-6 border-t border-gray-50 text-center">
+             <button type="button" className="text-[10px] font-bold text-gray-300 hover:text-secondary transition-colors tracking-widest uppercase">
+               Esqueceu sua senha? Entre em contato com o suporte
+             </button>
           </div>
         </div>
-        
-        <p className="mt-8 text-center text-white/20 text-[10px] font-medium tracking-tight">
-          © {new Date().getFullYear()} Peixoto Odontologia. Todos os direitos reservados.
-        </p>
+
+        {/* Branding Footer */}
+        <div className="mt-8 text-center space-y-4">
+           <p className="text-gray-300 text-[10px] font-bold tracking-tighter flex items-center justify-center gap-2">
+              PLATAFORMA DE GESTÃO DE CONTEÚDO v2.0
+           </p>
+        </div>
       </motion.div>
     </div>
   );
