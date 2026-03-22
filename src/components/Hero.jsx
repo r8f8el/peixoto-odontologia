@@ -81,35 +81,35 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-10"
+          className="flex flex-col items-center md:items-start text-center md:text-left space-y-10"
         >
-          <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-5 py-2 rounded-full text-secondary text-xs font-black tracking-[0.2em]">
+          <div className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 px-5 py-2 rounded-full text-secondary text-xs font-black tracking-[0.2em] mx-auto md:mx-0">
             <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
             <Sparkles size={14} /> {content.hero_badge}
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight">
+          <h1 className="text-5xl md:text-8xl font-display font-medium leading-[1.05] text-primary whitespace-pre-line tracking-tight max-w-2xl md:max-w-none mx-auto md:mx-0">
             {renderTitle(content.hero_title)}
           </h1>
           
-          <p className="text-lg md:text-xl text-primary/60 max-w-lg leading-relaxed font-body font-medium">
+          <p className="text-lg md:text-xl text-primary/60 max-w-lg leading-relaxed font-body font-medium mx-auto md:mx-0">
             {content.hero_subtitle}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6 pt-6">
+          <div className="flex flex-col sm:flex-row items-center gap-6 pt-6 w-full md:w-auto">
             <motion.a
               href="https://wa.me/5564993184545"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-primary text-secondary border-2 border-primary px-10 py-5 rounded-2xl font-black tracking-[0.2em] text-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-500 shadow-2xl flex items-center justify-center gap-3 cursor-pointer"
+              className="bg-primary text-secondary border-2 border-primary px-10 py-5 rounded-2xl font-black tracking-[0.2em] text-sm hover:bg-secondary hover:text-white hover:border-secondary transition-all duration-500 shadow-2xl flex items-center justify-center gap-3 cursor-pointer w-full sm:w-auto"
             >
               MARCAR CONSULTA <Diamond size={18} fill="currentColor" />
             </motion.a>
             <a 
               href="#equipe"
-              className="px-10 py-5 rounded-2xl font-bold tracking-widest text-sm text-primary/40 hover:text-secondary transition-colors duration-300 underline underline-offset-8 decoration-secondary/30 text-center"
+              className="px-10 py-5 rounded-2xl font-bold tracking-widest text-sm text-primary/40 hover:text-secondary transition-colors duration-300 underline underline-offset-8 decoration-secondary/30 text-center w-full sm:w-auto"
             >
               CONHEÇA A EQUIPE
             </a>
