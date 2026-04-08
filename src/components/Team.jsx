@@ -53,10 +53,10 @@ const Team = () => {
             transition={{ duration: 0.6 }}
             className="text-4xl md:text-6xl font-display text-primary uppercase tracking-tight"
           >
-            Mestres e Doutores a seu <span className="opacity-40 italic">Cuidado.</span>
+            Especialistas, mestres e doutores ao seu <span className="opacity-40 italic">Cuidado.</span>
           </motion.h2>
           <p className="text-primary/70 font-body text-xl max-w-xl mx-auto">
-            Uma equipe altamente qualificada, formada por professores e especialistas, pronta para oferecer tratamentos com excelência científica.
+            Uma equipe altamente qualificada, formada por professores e especialistas, pronta para oferecer tratamentos com excelência clínica.
           </p>
         </div>
 

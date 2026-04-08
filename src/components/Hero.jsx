@@ -13,9 +13,9 @@ const defaultHeroImages = [
 const Hero = () => {
   const [imgIndex, setImgIndex] = useState(0);
   const [content, setContent] = useState({
-    hero_title: 'Inovação e Arte em cada detalhe do seu sorriso.',
-    hero_subtitle: 'Uma abordagem moderna e sofisticada onde a odontologia de alta performance se une ao conhecimento de mestres e doutores.',
-    hero_badge: 'EXCELÊNCIA CLÍNICA & ACADÊMICA',
+    hero_title: 'Carinho em cada detalhe,\narte em cada sorriso.',
+    hero_subtitle: 'Odontologia que une sofisticação, cuidado e excelência! Com equipe de mestres e especialistas, utilizamos tecnologia de ponta e alta precisão para oferecer tratamentos personalizados, seguros e uma experiência acolhedora em cada etapa.',
+    hero_badge: 'Excelência em Odontologia Clínica',
     hero_images: JSON.stringify(defaultHeroImages)
   });
 

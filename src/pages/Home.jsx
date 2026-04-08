@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import BackgroundSlideshow from '../components/BackgroundSlideshow';
 import Treatments from '../components/Treatments';
 import Team from '../components/Team';
+import Reviews from '../components/Reviews';
 import Footer from '../components/Footer';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
@@ -49,6 +50,7 @@ function Home() {
         <Hero />
         <Treatments />
         <Team />
+        <Reviews />
         <Footer />
         <WhatsAppButton />
       </main>

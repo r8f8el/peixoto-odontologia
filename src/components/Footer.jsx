@@ -45,9 +45,7 @@ const Footer = () => {
               </div>
             </div>
             
-            <p className="font-body text-xl lg:text-3xl leading-snug tracking-tight text-slate-300 max-w-sm">
-              Inovação tecnológica e conhecimento acadêmico <span className="italic">lapidando</span> a sua saúde.
-            </p>
+
           </div>
 
           {/* Quick Links */}
@@ -93,6 +91,22 @@ const Footer = () => {
                   <div className="flex flex-col flex-1 overflow-hidden">
                     <span className="text-[10px] font-black uppercase tracking-widest text-secondary opacity-60">Localização</span>
                     <span className="text-slate-300 group-hover:text-white transition-colors text-sm leading-relaxed">Av. do Fórum, Qd. 33, Lt. 27, Sala B<br/>Itaguaí II, Caldas Novas - GO</span>
+                  </div>
+                </a>
+              </li>
+              <li className="w-full">
+                <a 
+                  href="https://www.instagram.com/peixotodonto/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center flex-col md:flex-row gap-4 group cursor-pointer w-full hover:translate-x-1 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 border border-white/10 rounded-2xl flex items-center justify-center bg-white/5 group-hover:bg-secondary group-hover:border-secondary transition-all duration-500 shrink-0">
+                    <Instagram size={24} className="group-hover:text-white" />
+                  </div>
+                  <div className="flex flex-col flex-1 overflow-hidden">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-secondary opacity-60">Clínica</span>
+                    <span className="text-slate-300 group-hover:text-white transition-colors text-base md:text-lg">@peixotodonto</span>
                   </div>
                 </a>
               </li>

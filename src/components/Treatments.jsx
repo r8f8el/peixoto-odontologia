@@ -5,19 +5,19 @@ import { supabase } from '../lib/supabase';
 
 const staticTreatments = [
   {
+    title: "Implantodontia",
+    description: "Implantes dentários e próteses fixas com planejamento digital e alta precisão clínica.",
+    icon_name: "Microchip"
+  },
+  {
     title: "Reabilitação Oral & Estética",
-    description: "Lentes de contato dental, facetas em porcelana e coroas personalizadas para um sorriso harmônico.",
+    description: "Lentes de contato dental, facetas e coroas em porcelana e próteses personalizadas para um sorriso harmônico.",
     icon_name: "Sparkles"
   },
   {
     title: "Ortodontia Moderna",
-    description: "Especialista em Alinhadores Invisíveis e aparelhos fixos de última geração para todas as idades.",
+    description: "Especialista em Alinhadores Invisíveis e aparelhos fixos de última geração.",
     icon_name: "Smile"
-  },
-  {
-    title: "Implantodontia",
-    description: "Implantes dentários e próteses fixas com planejamento digital e alta precisão clínica.",
-    icon_name: "Microchip"
   },
   {
     title: "Odontopediatria",
@@ -26,7 +26,7 @@ const staticTreatments = [
   },
   {
     title: "Endodontia Avançada",
-    description: "Tratamentos de canal com tecnologia de ponta para a preservação funcional e saúde do elemento dental.",
+    description: "Tratamentos e Retratamentos de canal com tecnologia de ponta e cirurgia parendodôntica preservando a saúde e estrutura dentária.",
     icon_name: "ShieldCheck"
   },
   {
@@ -71,11 +71,11 @@ const Treatments = () => {
         <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
           <div className="space-y-6">
             <h2 className="text-5xl md:text-7xl font-display text-primary uppercase leading-[1.1] tracking-tight">
-              Soluções Completas <br className="hidden md:block" />
-              de <span className="text-secondary opacity-70 italic font-black">Alta Performance.</span>
+              Aqui na Peixoto Odontologia, <br className="hidden md:block" />
+              sua história <span className="text-secondary opacity-70 italic font-black">vale muito!</span>
             </h2>
             <p className="text-primary/70 text-lg md:text-xl font-body max-w-xl mx-auto">
-              Unindo ciência e tecnologia para oferecer os melhores resultados em Caldas Novas.
+              Acolhimento, cuidado e odontologia de excelência em Caldas Novas.
             </p>
           </div>
           <motion.a 
