@@ -60,8 +60,8 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Dynamic CMS Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 lg:gap-20 items-stretch font-body">
+        {/* Dynamic CMS Cards - Centered Layout */}
+        <div className="flex flex-wrap justify-center gap-12 lg:gap-16 items-start font-body">
           {professionals.map((p, idx) => (
             <motion.div
               key={p.id}
@@ -69,10 +69,16 @@ const Team = () => {
               whileInView={{ opacity: 1, y: 0 }}
               whileTap={{ scale: 0.98 }}
               transition={{ delay: idx * 0.1, duration: 0.8 }}
-              className={`group flex flex-col items-center cursor-pointer ${idx % 2 !== 0 ? 'md:translate-y-12' : ''}`}
+              className="group flex flex-col items-center cursor-pointer w-full sm:w-[calc(50%-1.5rem)] lg:w-[calc(33.333%-2.7rem)] max-w-sm"
             >
               {/* Image with Desktop Hover Detail */}
               <div className="relative w-full aspect-[3/4] rounded-[3rem] overflow-hidden shadow-lux group-hover:shadow-[0_40px_80px_rgba(15,23,42,0.15)] transition-all duration-700 bg-slate-100 border-4 border-white">
+                {/* Fallback monogram placeholder if image is missing */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-slate-100 to-slate-200 text-primary/20">
+                  <span className="text-6xl font-display font-light">
+                    {p.name?.replace(/^(Dr\.|Dra\.)\s*/, '').split(' ').map(n => n[0]).slice(0, 2).join('')}
+                  </span>
+                </div>
                 <div 
                    className="absolute inset-0 bg-center bg-cover transition-transform duration-1000 group-hover:scale-110 grayscale-0 md:grayscale md:group-hover:grayscale-0 contrast-110" 
                    style={{ backgroundImage: `url(${p.image_url})` }}
